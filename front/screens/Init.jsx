@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { NativeBaseProvider, Button, Image, Svg} from "native-base";
 
+
 // import Svg from 'react-native-svg';
 
-function tuto () {
+function Init ({navigation}) {
   return (
 
     <NativeBaseProvider>
@@ -14,7 +15,7 @@ function tuto () {
       <View style={{width: 240, height: 276.88, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
         <Image marginLeft={'auto'} marginRight={'auto'} source={require('../assets/logo.png')} alt="Logo"/>
       </View>
-        <Button type="submit" onPressIn={() => navigation.navigate('logo')} style={{width: '150px', height: '50px', paddingLeft: 26, paddingRight: 26, paddingTop: 14, paddingBottom: 14, background: '#3867D6', borderRadius: 10, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex'}}>
+        <Button type="submit" onPressIn={() => navigation.navigate('Login')} style={{width: '150px', height: '50px', paddingLeft: 26, paddingRight: 26, paddingTop: 14, paddingBottom: 14, backgroundColor: '#4B7BEC', borderRadius: 10, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex'}}>
           <Text style={{textAlign: 'justify', color: 'white', fontSize: 17, fontWeight: '700', wordWrap: 'break-word'}}>Commencer</Text> 
         </Button>     
     </View>
@@ -31,4 +32,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default tuto;
+export default Init;

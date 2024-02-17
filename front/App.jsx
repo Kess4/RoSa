@@ -1,14 +1,15 @@
-import Tuto from './screens/tuto';
-import Login from './screens/login'; // Adjust the path based on your project structure
+import React from 'react';
+import Navigation from './navigation/Navigation';
 import { StyleSheet, Text, View, } from 'react-native';
+
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      {/* Other components or content in your main App component */}
-      <Login></Login>,
-      <Tuto />
-    </View>
+     <Navigation />
   );
 }
 
