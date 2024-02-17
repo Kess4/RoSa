@@ -34,8 +34,8 @@ export default function Form({navigation}) {
               <View style={{ width: 50, height: 71, position: 'relative' }}>
                 <View style={{ width: 50, height: 45.80, left: 0, top: 25.20, position: 'absolute' }}>
                   <View style={{ width: 50, height: 45.80, left: 0, top: 0, position: 'absolute', backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8' }} />
-                  <View style={{ width: 17, height: 22, left: 16.50, top: 11.60, position: 'absolute', justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
-                    <Text style={{ color: '#BCC5CB', fontSize: 14, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 22 }}>00</Text>
+                  <View style={{ width: 20, height: 22, left: 16.50, top: 11.60, position: 'absolute', justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+                    <TextInput style={{ color: '#BCC5CB', fontSize: 14, fontFamily: 'Marianne', fontWeight: '400', justifyContent: 'center' }} placeholder='00'/>
                   </View>
                 </View>
                   <Text style={{ width: 50, left: 0, top: 0, position: 'absolute', color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 16 }}>Jour</Text>
@@ -82,16 +82,16 @@ export default function Form({navigation}) {
           <Text style={{ color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '700', lineHeight: 25 }}>Lieu</Text>
           <View style={{ width: 358, height: 64, position: 'relative', marginBottom: 16}}>
             <Text style={{ width: 358, height: 16, left: 0, top: 48, position: 'absolute', textAlign: 'right', color: 'black', fontSize: 12, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 16, marginTop : 8 }}>0/100</Text>
-            <TextInput style={{ width: 358, height: 46, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8', paddingLeft: 12, color: '#BCC5CB', fontSize: 14, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 22 }} placeholder="Rentrez le lieu de l'accident" />
+            <TextInput style={{ width: 358, height: 46, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8', paddingLeft: 12, color: '#BCC5CB', fontSize: 14, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 18 }} placeholder="Rentrez le lieu de l'accident" />
           </View>          
 
-          <Text style={{ color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '700', lineHeight: 25 }}>Type de collision</Text>
+          <Text style={{ color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '700', lineHeight: 18 }}>Type de collision</Text>
           <View style={{ width: 358, height: 64, position: 'relative', marginBottom: 16}}>
             <Text style={{ width: 358, height: 16, left: 0, top: 48, position: 'absolute', textAlign: 'right', color: 'black', fontSize: 12, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 16, marginTop : 8}}>0/100</Text>
-            <TextInput style={{ width: 358, height: 46, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8', paddingLeft: 12, color: '#BCC5CB', fontSize: 14, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 22 }}  placeholder="Expliquer le type de colision" />
+            <TextInput style={{ width: 358, height: 46, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8', paddingLeft: 12, color: '#BCC5CB', fontSize: 14, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 18 }}  placeholder="Expliquer le type de colision" />
           </View>
 
-          <Text style={{ color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '700', lineHeight: 25 }}>Météo</Text>
+          <Text style={{ color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '700', lineHeight: 18 }}>Météo</Text>
           {/* Autres éléments du formulaire */}
           <View style={{flexDirection: 'row', gap: 15,  marginBottom : 16}}>
             <Image
@@ -123,10 +123,10 @@ export default function Form({navigation}) {
             style={{ width: 40, height: 41 }}
             />
           </View>
-          <Text style={{ marginTop: 10, color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '700', lineHeight: 25, marginTop : 16}}>Commentaire</Text>
+          <Text style={{ marginTop: 10, color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '700', lineHeight: 18, marginTop : 16}}>Commentaire</Text>
           <View style={{ width: 358, height: 64, position: 'relative' }}>
             <Text style={{ width: 358, height: 16, left: 0, top: 48, position: 'absolute', textAlign: 'right', color: 'black', fontSize: 12, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 16, marginTop : 8}}>0/100</Text>
-            <TextInput style={{ width: 358, height: 46, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8', paddingLeft: 12, color: '#BCC5CB', fontSize: 14, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 22 }}  placeholder="Ajouter un commentaire" />
+            <TextInput style={{ width: 358, height: 46, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8', paddingLeft: 12, color: '#BCC5CB', fontSize: 14, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 18 }}  placeholder="Ajouter un commentaire" />
           </View>
 
           <TouchableOpacity style={{ alignSelf: 'stretch', padding: 15, justifyContent: 'center', alignItems: 'center', backgroundColor: '#4B7BEC', borderRadius: 10, marginTop: 25, marginBottom : 44 }}>
