@@ -5,7 +5,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 
 
 
-const Tuto = ({navigation}) => {
+const Login = ({navigation}) => {
   
 //   const [Email, setUserEmail] = React.useState('');
 //   const [Password, setUserPassword] = React.useState('');
@@ -57,4 +57,4 @@ const Tuto = ({navigation}) => {
     </NativeBaseProvider>
   };
 
-export default Tuto;
+export default Login;

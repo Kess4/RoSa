@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity , Image, ScrollView} from 'react-native';
 
-export default function Form({navigation}) {
+
+const Form = ({ navigation }) => {
+  const meteo = [
+    { name: 'soleil', source: require('../assets/Icon/soleil.png') },
+    { name: 'clair', source: require('../assets/Icon/clair.png') },
+    { name: 'nuageux', source: require('../assets/Icon/nuageux.png') },    
+    { name: 'pluie', source: require('../assets/Icon/pluie.png') },    
+    { name: 'orage', source: require('../assets/Icon/orage.png') },    
+    { name: 'neige', source: require('../assets/Icon/neige.png') },    
+    { name: 'tempete', source: require('../assets/Icon/tempete.png') },    
+
+    ];
+
+  const [selectedMeteo, setSelectedMeteo] = useState(null);
+
+  const handleIconPress = (metoName) => {
+    setSelectedMeteo(metoName);
+  };
+
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
     <View style={{ flex: 1, backgroundColor: 'white', paddingHorizontal: '5%', paddingTop: '20%' }}>
@@ -46,35 +65,35 @@ export default function Form({navigation}) {
               <View style={{ width: 50, height: 71, position: 'relative' }}>
                 <View style={{ width: 50, height: 45.80, left: 0, top: 25.20, position: 'absolute' }}>
                   <View style={{ width: 50, height: 45.80, left: 0, top: 0, position: 'absolute', backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8' }} />
-                  <View style={{ width: 17, height: 22, left: 16.50, top: 11.60, position: 'absolute', justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
-                    <Text style={{ color: '#BCC5CB', fontSize: 14, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 22 }}>00</Text>
+                  <View style={{ width: 20, height: 22, left: 16.50, top: 11.60, position: 'absolute', justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+                    <TextInput style={{ color: '#BCC5CB', fontSize: 14, fontFamily: 'Marianne', fontWeight: '400', justifyContent: 'center' }} placeholder='00'/>
                   </View>
                 </View>
                   <Text style={{ width: 50, left: 0, top: 0, position: 'absolute', color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 16 }}>Mois</Text>
               </View>
             </View>
 
-            <View style={{ width: '25%'}}>
+            <View style={{ width: '23%'}}>
               <View style={{ width: 50, height: 71, position: 'relative' }}>
                 <View style={{ width: 50, height: 45.80, top: 25.20, position: 'absolute' }}>
                   <View style={{ width: 80, height: 45.80, left: 0, top: 0, position: 'absolute', backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8' }} />
-                  <View style={{ width: 80, height: 22, top: 11.60, position: 'absolute', justifyContent: 'center', alignItems: 'center', flexDirection: 'row'}}>
-                    <Text style={{ color: '#BCC5CB', fontSize: 14, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 22 }}>0000</Text>
+                  <View style={{ width: 80, height: 22, top: 11.60, position: 'absolute', justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+                    <TextInput style={{ color: '#BCC5CB', fontSize: 14, fontFamily: 'Marianne', fontWeight: '400', justifyContent: 'center' }} placeholder='0000'/>
                   </View>
                 </View>
-                  <Text style={{ width: 50, left: 0, top: 0, position: 'absolute', color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 16 }}>Annee</Text>
+                  <Text style={{ width: 80,  position: 'absolute', color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 16 }}>Année</Text>
               </View>
             </View>
 
-            <View style={{ width: '20%' }}>
-              <View style={{ width: 50, height: 71, position: 'relative'}}>
+            <View style={{ width: '20%'}}>
+              <View style={{ width: 50, height: 71, position: 'relative' }}>
                 <View style={{ width: 50, height: 45.80, top: 25.20, position: 'absolute' }}>
-                  <View style={{ width: 80, height: 45.80, position: 'absolute', backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8' }} />
-                  <View style={{ width: 80, height: 22, top: 11.60, position: 'absolute', justifyContent: 'center', alignItems: 'center', flexDirection: 'row'}}>
-                    <Text style={{ color: '#BCC5CB', fontSize: 14, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 22 }}>00:00</Text>
+                  <View style={{ width: 80, height: 45.80, left: 0, top: 0, position: 'absolute', backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8' }} />
+                  <View style={{ width: 80, height: 22, top: 11.60, position: 'absolute', justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+                    <TextInput style={{ color: '#BCC5CB', fontSize: 14, fontFamily: 'Marianne', fontWeight: '400', justifyContent: 'center'}} placeholder='00:00'/>
                   </View>
                 </View>
-                  <Text style={{ width: 50, left: 0, top: 0, position: 'absolute', color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 16 }}>Heure</Text>
+                  <Text style={{ width: 80,  position: 'absolute', color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 16 }}>Heure</Text>
               </View>
             </View>
           </View>
@@ -94,35 +113,16 @@ export default function Form({navigation}) {
           <Text style={{ color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '700', lineHeight: 18 }}>Météo</Text>
           {/* Autres éléments du formulaire */}
           <View style={{flexDirection: 'row', gap: 15,  marginBottom : 16}}>
-            <Image
-            source={require('../assets/Icon/soleil.png')}
-            style={{ width: 40, height: 41 }}
-            />
-            <Image
-            source={require('../assets/Icon/clair.png')}
-            style={{ width: 40, height: 41 }}
-            />
-            <Image
-            source={require('../assets/Icon/nuageux.png')}
-            style={{ width: 40, height: 41 }}
-            />
-            <Image
-            source={require('../assets/Icon/pluie.png')}
-            style={{ width: 40, height: 41 }}
-            />
-            <Image
-            source={require('../assets/Icon/orage.png')}
-            style={{ width: 40, height: 41 }}
-            />
-            <Image
-            source={require('../assets/Icon/neige.png')}
-            style={{ width: 40, height: 41 }}
-            />
-            <Image
-            source={require('../assets/Icon/tempete.png')}
-            style={{ width: 40, height: 41 }}
-            />
+            {meteo.map((icon) => (
+            <TouchableOpacity key={icon.name} onPress={() => handleIconPress(icon.name)}>
+              <Image
+              source={icon.source}
+              style={{ width: 40, height: 41, tintColor: selectedMeteo === icon.name ? 'black' : 'gray' }}
+              />
+            </TouchableOpacity>
+            ))}
           </View>
+
           <Text style={{ marginTop: 10, color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '700', lineHeight: 18, marginTop : 16}}>Commentaire</Text>
           <View style={{ width: 358, height: 64, position: 'relative' }}>
             <Text style={{ width: 358, height: 16, left: 0, top: 48, position: 'absolute', textAlign: 'right', color: 'black', fontSize: 12, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 16, marginTop : 8}}>0/100</Text>
@@ -138,3 +138,4 @@ export default function Form({navigation}) {
     </ScrollView>
   );
 }
+export default Form;
