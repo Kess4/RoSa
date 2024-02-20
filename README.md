@@ -35,12 +35,9 @@ To run the app locally using Expo, follow these steps:
 
 This will open the Expo development server, and you can run the app on your simulator/emulator or scan the QR code with the Expo Go app on your mobile device.
 
-## Contributing
 
-We welcome contributions! If you'd like to contribute to ROSA, please follow our [Contribution Guidelines](CONTRIBUTING.md).
+## Screenshots  
 
-## License
+<img width="390"  alt="Capture d’écran 2024-02-20 à 21 44 35" src="https://github.com/Kess4/RoSa/assets/91597783/931ea7f3-e4e4-4a89-8fd1-9bab7cbc8080">
 
-This project is licensed under the [EDS License](LICENSE).
-
-![image](https://github.com/Kess4/RoSa/assets/91597783/492e2cc6-2a16-459e-93e2-820582f19839)
+<img width="393;" alt="Capture d’écran 2024-02-20 à 21 49 48" src="https://github.com/Kess4/RoSa/assets/91597783/c47771f1-677d-4b5a-9347-c656ffea04f8">
