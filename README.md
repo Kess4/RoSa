@@ -42,3 +42,5 @@ We welcome contributions! If you'd like to contribute to ROSA, please follow our
 ## License
 
 This project is licensed under the [EDS License](LICENSE).
+
+![image](https://github.com/Kess4/RoSa/assets/91597783/492e2cc6-2a16-459e-93e2-820582f19839)
