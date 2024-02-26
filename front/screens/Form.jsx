@@ -38,7 +38,7 @@ const Form = ({ navigation }) => {
             <Text style={{ color: 'black', fontSize: 34, fontFamily: 'Marianne', fontWeight: '700', lineHeight: 41 }}>Formulaire</Text>
           </View>
 
-          <View style={{ alignSelf: 'stretch', flexDirection: 'row', paddingLeft: 40, paddingRight: 40, paddingTop: 20, paddingBottom: 20, margin: 16, backgroundColor: '#F1F1F1', borderRadius: 10, borderWidth: 0.8, borderColor: 'black', justifyContent: 'center', alignItems: 'center', gap: 10 }}>
+          <View style={{ alignSelf: 'stretch', flexDirection: 'row', paddingLeft: 40, paddingRight: 40, paddingTop: 20, paddingBottom: 20, margin: 16, backgroundColor: '#F1F1F1', borderRadius: 10, borderWidth: 1.5, borderStyle:'dashed', borderColor: 'black', justifyContent: 'center', alignItems: 'center', gap: 10 }}>
             <Image
             source={require('../assets/Icon/photo.png')}
             style={{ width: 40, height: 41 }}

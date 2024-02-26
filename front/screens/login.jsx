@@ -1,60 +1,111 @@
-import * as React from "react";
-import { View, Text, setState} from "react-native";
-import { NativeBaseProvider, Box, Center, Select, CheckIcon, Heading, VStack, FormControl, Link, Input, Button, HStack, Image, Icon, Pressable, Flex} from "native-base";
-import { MaterialIcons } from "@expo/vector-icons"; 
+import React from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
-
-
-const Login = ({navigation}) => {
-  
-//   const [Email, setUserEmail] = React.useState('');
-//   const [Password, setUserPassword] = React.useState('');
-//     const handleLogin = (credentials) => {
-//       credentials.preventDefault();
-//       console.log(Email, Password);
-  
-//       axios
-//         .post('http://172.20.10.2:3000/user')
-//         .then((response) => {
-//           console.log(response);
-//           if(response.status === 200) {
-//             console.log("login successful")
-//             }
-//         }).catch((error) => {
-//           console.error(error);
-//         })
-//     }
-    return <NativeBaseProvider>
-     <Center w="100%">
-        <Box safeArea p="2" py="8" w="90%" maxW="290">
-            <View style={{paddingBottom: 10, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 30, display: 'flex'}}>
-            <Text style={{textAlign: 'justify', color: '#EB3B5A', fontSize: 40, fontWeight: '800', letterSpacing: 16, wordWrap: 'break-word'}}>ROSA</Text>
+const Login = ({ navigation }) => {
+  return (
+    <View style={styles.container}>
+      <View style={styles.logoContainer}>
+        <Text style={styles.logoText}>ROSA</Text>
+        <Image style={styles.logoImage} marginLeft={'auto'} marginRight={'auto'} source={require('../assets/logo.png')} alt="Logo"/>
       </View>
-      <View style={{width: 240, height: 276.88, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
-        <Image marginLeft={'auto'} marginRight={'auto'} source={require('../assets/logo.png')} alt="Logo"/>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Entrez votre nom"
+          placeholderTextColor="rgba(46, 46, 46, 1)"
+        />
       </View>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="**************"
+          placeholderTextColor="rgba(22, 22, 22, 1)"
+          secureTextEntry={true}
+        />
+      </View>
+      <TouchableOpacity onPressIn={() => navigation.navigate('Form')} style={styles.button}>
+        <Text style={styles.buttonText}>Se connecter</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPressIn={() => navigation.goBack()} style={styles.forgotPassword} >
+        <Text style={styles.forgotPasswordText}>Mot de passe oublié ?</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    padding: 20,
+  },
+  logoContainer: {
+    marginTop: 187,
+    marginBottom: 30,
+    
+  },
+  logoImage: {
+    width: 130,
+    height: 150,
+    marginTop: 40,
+    marginBottom: 40,
+  },
+  logoText: {
+    color: '#EB627A',
+    fontSize: 40,
+    fontFamily: 'Marianne',
+    fontWeight: '800',
+    letterSpacing: 16,
+    wordWrap: 'break-word'
+  },
+  inputContainer: {
+    width: '100%',
+    marginBottom: 16,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: 'rgba(22, 22, 22, 0.15)',
+    justifyContent: 'flex-start',
+  },
+  input: {
+    height: 55,
+    padding: 15,
+    fontSize: 14,
+    fontFamily: 'Marianne',
+    fontWeight: '200',
+    color: '#161616',
+    borderColor : 'rgba(46, 46, 46, 0.15)'
+  },
+
   
-          <VStack space={3} mt="5">
-            <FormControl>
-              <Input InputLeftElement={<Icon as={<MaterialIcons name="person" />} size={5} ml="2" color="muted.400" />} placeholder="Nom d'utilisateur" onChangeText={(Email) =>
-                  setUserEmail(Email)}
-              />
-              <Input mt="3" InputLeftElement={<Icon as={<MaterialIcons name="visibility-off" />} size={5} ml="2" color="muted.400" />}  type={"password"} placeholder="Mot de passe" onChangeText={(Password) => setUserPassword(Password)}></Input>
-            <Link _text={{
-              fontSize: "xs",
-              fontWeight: "500",
-              color: "indigo.500"
-            }} alignSelf="flex-end" mt="1">
-                Mot de passe oublié ?
-              </Link>
-            </FormControl>
-            <Button type="submit" onPressIn={() => navigation.navigate('Form')} style={{width: '150px', height: '50px', paddingLeft: 26, paddingRight: 26, paddingTop: 14, paddingBottom: 14, backgroundColor: '#4B7BEC', borderRadius: 10, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex'}}>
-                <Text style={{textAlign: 'justify', color: 'white', fontSize: 17, fontWeight: '700', wordWrap: 'break-word'}}>Se connecter</Text> 
-            </Button>  
-          </VStack>
-        </Box>
-      </Center>
-    </NativeBaseProvider>
-  };
+  button: {
+    width: '100%',
+    height: 50,
+    backgroundColor: '#4B7BEC',
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 17,
+    fontFamily: 'Marianne',
+    fontWeight: '700',
+  },
+  forgotPassword: {
+    borderRadius: 17,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  forgotPasswordText: {
+    color: '#0060FF',
+    fontSize: 14,
+    fontFamily: 'Marianne',
+    fontWeight: '700',
+    lineHeight: 22,
+  },
+});
 
 export default Login;
