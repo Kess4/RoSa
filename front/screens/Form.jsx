@@ -113,14 +113,17 @@ const Form = ({ navigation }) => {
           <Text style={{ color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '700', lineHeight: 18 }}>Météo</Text>
           {/* Autres éléments du formulaire */}
           <View style={{flexDirection: 'row', gap: 15,  marginBottom : 16}}>
+            <View style={{flexDirection: 'row', gap: 15,  marginBottom : 16}}>
             {meteo.map((icon) => (
             <TouchableOpacity key={icon.name} onPress={() => handleIconPress(icon.name)}>
               <Image
               source={icon.source}
               style={{ width: 40, height: 41, tintColor: selectedMeteo === icon.name ? 'black' : 'gray' }}
               />
+              <Text style={{ color: selectedMeteo === icon.name ? 'black' : 'gray', fontSize: 14, fontFamily: 'Marianne', fontWeight: '500', lineHeight: 37.50, wordWrap: 'break-word'}}>{icon.name}</Text>
             </TouchableOpacity>
             ))}
+            </View>
           </View>
 
           <Text style={{ marginTop: 10, color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '700', lineHeight: 18, marginTop : 16}}>Commentaire</Text>
