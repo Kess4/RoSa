@@ -9,8 +9,8 @@ const Form = ({ navigation }) => {
     { name: 'nuageux', source: require('../assets/Icon/nuageux.png') },    
     { name: 'pluie', source: require('../assets/Icon/pluie.png') },    
     { name: 'orage', source: require('../assets/Icon/orage.png') },    
-    { name: 'neige', source: require('../assets/Icon/neige.png') },    
-    { name: 'tempete', source: require('../assets/Icon/tempete.png') },    
+    // { name: 'neige', source: require('../assets/Icon/neige.png') },    
+    { name: 'tempete', source: require('../assets/Icon/tempete.png') },      
 
     ];
 

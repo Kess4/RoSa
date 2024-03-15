@@ -23,7 +23,7 @@ const Login = ({ navigation }) => {
           secureTextEntry={true}
         />
       </View>
-      <TouchableOpacity onPressIn={() => navigation.navigate('Form')} style={styles.button}>
+      <TouchableOpacity onPressIn={() => navigation.navigate('Home')} style={styles.button}>
         <Text style={styles.buttonText}>Se connecter</Text>
       </TouchableOpacity>
       <TouchableOpacity onPressIn={() => navigation.goBack()} style={styles.forgotPassword} >
