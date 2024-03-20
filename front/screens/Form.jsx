@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity , Image, ScrollView} from 'react-native';
+import { Icon } from '@rneui/themed';
 
 
 const Form = ({ navigation }) => {
@@ -27,14 +28,12 @@ const Form = ({ navigation }) => {
       <View style={{ flex: 1 }}>
         <View style={{ alignSelf: 'stretch', justifyContent: 'flex-start', alignItems: 'flex-start', flexDirection: 'column', gap: 16 }}>
           <View style={{ alignSelf: 'stretch', alignItems: 'center', flexDirection: 'row', gap: 16 }}>
-          
-          <TouchableOpacity onPressIn={() => navigation.goBack()} >
-            <Image
-              source={require('../assets/retour.png')}
-              style={{ width: 35, height: 35 }}
-              />
-          </TouchableOpacity>
-
+            <Icon
+            name='arrow-back-outline' 
+            type='ionicon'
+            size={40}
+            onPressIn={() => navigation.goBack()}
+            />
             <Text style={{ color: 'black', fontSize: 34, fontFamily: 'Marianne', fontWeight: '700', lineHeight: 41 }}>Formulaire</Text>
           </View>
 

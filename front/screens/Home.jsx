@@ -1,27 +1,31 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, StyleSheet, Image, Dimensions } from 'react-native';
-import MapView from 'react-native-maps';
+import { View,StyleSheet, Dimensions } from 'react-native';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
+import { Icon } from '@rneui/themed';
 
 const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <MapView
         style={styles.map}
-        provider={MapView.PROVIDER_GOOGLE}
+        provider={PROVIDER_GOOGLE}
         customMapStyle={silverMapStyle}
         initialRegion={{
             latitude: 44.85855961835391,
-            longitude: -0.5813889738864102,
+            longitude: 0.5813889738864102,
             latitudeDelta: 0.422,
             longitudeDelta: 0.221,
         }}
       />
-        <TouchableOpacity onPressIn={() => navigation.navigate('Form')} style={{ right: 'auto', bottom: 45, position: 'absolute'}}>
-            <Image
-            source={require('../assets/btn.png')}
-            style={{ width: 60, height: 60}}
-            />
-        </TouchableOpacity>
+        <View style={{ right: 'auto', bottom: 45, position: 'absolute'}}>
+          <Icon
+          name='report' 
+          color='#EB3B5A' 
+          size={55}
+          onPressIn={() => navigation.navigate('Form')}
+          />
+        
+        </View>
     </View>
   );
 };
