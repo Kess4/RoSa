@@ -11,10 +11,10 @@ const Home = ({ navigation }) => {
         provider={PROVIDER_GOOGLE}
         customMapStyle={silverMapStyle}
         initialRegion={{
-            latitude: 44.85855961835391,
-            longitude: 0.5813889738864102,
-            latitudeDelta: 0.422,
-            longitudeDelta: 0.221,
+          latitude: 44.85855961835391,
+          longitude: -0.5813889738864102,
+          latitudeDelta: 0.422,
+          longitudeDelta: 0.221,
         }}
       />
         <View style={{ right: 'auto', bottom: 45, position: 'absolute'}}>
