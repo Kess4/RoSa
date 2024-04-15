@@ -41,3 +41,4 @@ This will open the Expo development server, and you can run the app on your simu
 <img width="390"  alt="Capture d’écran 2024-02-20 à 21 44 35" src="https://github.com/Kess4/RoSa/assets/91597783/931ea7f3-e4e4-4a89-8fd1-9bab7cbc8080">
 
 <img width="393;" alt="Capture d’écran 2024-02-20 à 21 49 48" src="https://github.com/Kess4/RoSa/assets/91597783/c47771f1-677d-4b5a-9347-c656ffea04f8">
+<img width="469" alt="Capture d’écran 2024-04-16 à 00 10 40" src="https://github.com/Kess4/RoSa/assets/91597783/644dc781-36bf-4ec0-b08e-9165913ea556">
