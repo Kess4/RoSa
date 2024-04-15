@@ -1,7 +1,68 @@
-import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
+import axios from 'axios';
 
 const Login = ({ navigation }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  // Fonction pour stocker les informations de connexion
+  const storeCredentials = async (token) => {
+    try {
+      await AsyncStorage.setItem('token', token);
+    } catch (error) {
+      console.error('Error storing credentials:', error);
+    }
+  };
+
+  // Fonction pour récupérer les informations de connexion
+  const getCredentials = async () => {
+    try {
+      const token = await AsyncStorage.getItem('token');
+      return token;
+    } catch (error) {
+      console.error('Error getting credentials:', error);
+      return null;
+    }
+  };
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post('http://localhost:3000/auth/login', {
+        username,
+        password,
+      });
+      // console.log(response.config.data)
+      if (response.status == 200) {
+        // Authentification réussie, naviguer vers la page d'accueil
+        Alert.alert('Bienvenue sur RoSa');
+        navigation.navigate('Home');
+        const token = response.data.token;
+        storeCredentials(token);
+
+      } else {
+        // Afficher un message d'erreur si l'authentification échoue
+        Alert.alert('Erreur de connexion');
+      }
+    } catch (error) {
+      console.error('Erreur lors de la connexion :', error);
+      Alert.alert('Erreur', 'Une erreur s\'est produite lors de la connexion.');
+    }
+  };
+
+  useEffect(() => {
+    const checkLoggedIn = async () => {
+      const token = await getCredentials();
+      if (token) {
+        // Naviguer directement vers la page d'accueil si l'utilisateur est déjà connecté
+        navigation.navigate('Home');
+      }
+    };
+    checkLoggedIn();
+  }, []);
+
+
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
@@ -13,6 +74,8 @@ const Login = ({ navigation }) => {
           style={styles.input}
           placeholder="Entrez votre nom"
           placeholderTextColor="rgba(46, 46, 46, 1)"
+          value={username}
+          onChangeText={setUsername}
         />
       </View>
       <View style={styles.inputContainer}>
@@ -21,17 +84,20 @@ const Login = ({ navigation }) => {
           placeholder="**************"
           placeholderTextColor="rgba(22, 22, 22, 1)"
           secureTextEntry={true}
+          value={password}
+          onChangeText={setPassword}
         />
       </View>
-      <TouchableOpacity onPressIn={() => navigation.navigate('Home')} style={styles.button}>
+      <TouchableOpacity onPress={handleLogin} style={styles.button}>
         <Text style={styles.buttonText}>Se connecter</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPressIn={() => navigation.goBack()} style={styles.forgotPassword} >
+      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.forgotPassword} >
         <Text style={styles.forgotPasswordText}>Mot de passe oublié ?</Text>
       </TouchableOpacity>
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {

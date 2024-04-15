@@ -1,9 +1,28 @@
-import React from 'react';
+import React,  { useState, useEffect }  from 'react';
 import { View,StyleSheet, Dimensions } from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
+import MapView from 'react-native-map-clustering';
+import {Marker, PROVIDER_GOOGLE, Callout  } from 'react-native-maps';
 import { Icon } from '@rneui/themed';
+import axios from 'axios';
 
 const Home = ({ navigation }) => {
+
+  const [accidents, setAccidents] = useState([]);
+
+  useEffect(() => {
+    const fetchAccidents = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/accidents');
+        console.log(response.data)
+        setAccidents(response.data);
+      } catch (error) {
+        console.error('Error fetching accidents:', error);
+      };
+    };  
+    fetchAccidents();
+  }, []);
+  
+
   return (
     <View style={styles.container}>
       <MapView
@@ -16,16 +35,31 @@ const Home = ({ navigation }) => {
           latitudeDelta: 0.422,
           longitudeDelta: 0.221,
         }}
-      />
-        <View style={{ right: 'auto', bottom: 45, position: 'absolute'}}>
-          <Icon
+        >
+        
+        {accidents.map((accident, index) => (
+          <Marker
+            key={index}
+            coordinate={{ latitude: parseFloat(accident.latitude), longitude: parseFloat(accident.longitude) }}
+            title={`Accident ${index + 1}`}
+            description={`Date: ${accident.date}, Heure: ${accident.heure}`}
+          >
+            <View style={styles.circle}>
+              <View style={styles.accident} />
+            </View>
+          </Marker>
+          ))}
+      </MapView>
+
+      <View style={{ right: 'auto', bottom: 45, position: 'absolute'}}>
+        <Icon
           name='report' 
           color='#EB3B5A' 
           size={55}
           onPressIn={() => navigation.navigate('Form')}
-          />
+        />
         
-        </View>
+      </View>
     </View>
   );
 };
@@ -201,6 +235,27 @@ const styles = StyleSheet.create({
   map: {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
+  },
+
+  circle: {
+    width: 40,
+    height: 40,
+    borderRadius: 200
+  },
+
+  accident: {
+    backgroundColor: "rgba(235, 59, 90, 1)",
+    width: 30,
+    height: 30,
+    position: "absolute",
+    top: 1,
+    left: 1,
+    right: 1,
+    bottom: 1,
+    borderRadius: 200,
+    borderWidth : 4,
+    borderColor : "#ffffff",
+    zIndex: 2
   }
 
 });

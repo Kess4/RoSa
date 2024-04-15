@@ -10,17 +10,28 @@ const Form = ({ navigation }) => {
     { name: 'nuageux', source: require('../assets/Icon/nuageux.png') },    
     { name: 'pluie', source: require('../assets/Icon/pluie.png') },    
     { name: 'orage', source: require('../assets/Icon/orage.png') },    
-    // { name: 'neige', source: require('../assets/Icon/neige.png') },    
-    { name: 'tempete', source: require('../assets/Icon/tempete.png') },      
+    { name: 'neige', source: require('../assets/Icon/neige.png') },    
+    // { name: 'tempete', source: require('../assets/Icon/tempete.png') },   
+    // { name: 'tempete', source: require('../assets/Icon/tempete.png') },   
+    // { name: 'tempete', source: require('../assets/Icon/tempete.png') },      
 
     ];
 
+    const vis = [
+      { name: 'Crepuscule ou aube', source: require('../assets/Icon/aube.png') },
+      { name: 'Nuit avec eclairage allume', source: require('../assets/Icon/allume.png') },
+      { name: 'Nuit avec eclairage eteint', source: require('../assets/Icon/eclairage.png') },    
+      { name: 'Nuit sans eclairage', source: require('../assets/Icon/nuit.png') },    
+      { name: 'Plein jour', source: require('../assets/Icon/soleil.png') }
+  
+      ];
   const [selectedMeteo, setSelectedMeteo] = useState(null);
+  const [selectedVis, setselectedVis] = useState(null);
 
-  const handleIconPress = (metoName) => {
-    setSelectedMeteo(metoName);
+  const handleIconPress = (meteoName, visName) => {
+    setSelectedMeteo(meteoName);
+    setselectedVis(visName);
   };
-
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -103,18 +114,24 @@ const Form = ({ navigation }) => {
             <TextInput style={{ width: 358, height: 46, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8', paddingLeft: 12, color: '#BCC5CB', fontSize: 14, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 18 }} placeholder="Rentrez le lieu de l'accident" />
           </View>          
 
+          <Text style={{ color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '700', lineHeight: 18 }}>Type de véhicule</Text>
+          <View style={{ width: 358, height: 64, position: 'relative', marginBottom: 16}}>
+            <Text style={{ width: 358, height: 16, left: 0, top: 48, position: 'absolute', textAlign: 'right', color: 'black', fontSize: 12, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 16, marginTop : 8}}>0/100</Text>
+            <TextInput style={{ width: 358, height: 46, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8', paddingLeft: 12, color: '#BCC5CB', fontSize: 14, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 18 }}  placeholder="Décrivez les différents véhicules impliqués" />
+          </View>
+
           <Text style={{ color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '700', lineHeight: 18 }}>Type de collision</Text>
           <View style={{ width: 358, height: 64, position: 'relative', marginBottom: 16}}>
             <Text style={{ width: 358, height: 16, left: 0, top: 48, position: 'absolute', textAlign: 'right', color: 'black', fontSize: 12, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 16, marginTop : 8}}>0/100</Text>
             <TextInput style={{ width: 358, height: 46, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8', paddingLeft: 12, color: '#BCC5CB', fontSize: 14, fontFamily: 'Marianne', fontWeight: '400', lineHeight: 18 }}  placeholder="Expliquer le type de colision" />
           </View>
 
+
           <Text style={{ color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '700', lineHeight: 18 }}>Météo</Text>
           {/* Autres éléments du formulaire */}
-          <View style={{flexDirection: 'row', gap: 15,  marginBottom : 16}}>
-            <View style={{flexDirection: 'row', gap: 15,  marginBottom : 16}}>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginBottom: 16, marginLeft:'auto', marginRight: 'auto', gap:20}}>
             {meteo.map((icon) => (
-            <TouchableOpacity key={icon.name} onPress={() => handleIconPress(icon.name)}>
+            <TouchableOpacity key={icon.name} onPress={() => handleIconPress(selectedVis, icon.name)} style={{ flexDirection: 'column', alignItems: 'center' }}>
               <Image
               source={icon.source}
               style={{ width: 40, height: 41, tintColor: selectedMeteo === icon.name ? 'black' : 'gray' }}
@@ -123,6 +140,19 @@ const Form = ({ navigation }) => {
             </TouchableOpacity>
             ))}
             </View>
+
+          <Text style={{ color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '700', lineHeight: 18 }}>Visibilité</Text>
+          {/* Autres éléments du formulaire */}
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', marginBottom: 16, gap:20 }}>
+            {vis.map((icon) => (
+            <TouchableOpacity key={icon.name} onPress={() => handleIconPress(selectedMeteo, icon.name)} style={{ flexDirection: 'column', alignItems: 'center' }}>
+              <Image
+              source={icon.source}
+              style={{ width: 25, height: 26, tintColor: selectedVis === icon.name ? 'black' : 'gray' }}
+              />
+              <Text style={{ color: selectedVis === icon.name ? 'black' : 'gray', justifyContent: 'center', fontSize: 14, fontFamily: 'Marianne', fontWeight: '500', lineHeight: 37.50, wordWrap: 'break-word'}}>{icon.name}</Text>
+            </TouchableOpacity>
+            ))}
           </View>
 
           <Text style={{ marginTop: 10, color: 'black', fontSize: 16, fontFamily: 'Marianne', fontWeight: '700', lineHeight: 18, marginTop : 16}}>Commentaire</Text>
