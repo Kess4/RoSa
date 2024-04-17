@@ -36,13 +36,12 @@ const Login = ({ navigation }) => {
       // console.log(response.config.data)
       if (response.status == 200) {
         // Authentification réussie, naviguer vers la page d'accueil
-        Alert.alert('Bienvenue sur RoSa');
-        navigation.navigate('Home');
         const token = response.data.token;
         storeCredentials(token);
+        Alert.alert('Bienvenue sur RoSa');
+        navigation.navigate('Home');
 
       } else {
-        // Afficher un message d'erreur si l'authentification échoue
         Alert.alert('Erreur de connexion');
       }
     } catch (error) {
@@ -51,16 +50,6 @@ const Login = ({ navigation }) => {
     }
   };
 
-  useEffect(() => {
-    const checkLoggedIn = async () => {
-      const token = await getCredentials();
-      if (token) {
-        // Naviguer directement vers la page d'accueil si l'utilisateur est déjà connecté
-        navigation.navigate('Home');
-      }
-    };
-    checkLoggedIn();
-  }, []);
 
 
   return (
@@ -91,9 +80,9 @@ const Login = ({ navigation }) => {
       <TouchableOpacity onPress={handleLogin} style={styles.button}>
         <Text style={styles.buttonText}>Se connecter</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.forgotPassword} >
+      {/* <TouchableOpacity onPress={() => navigation.goBack()} style={styles.forgotPassword} >
         <Text style={styles.forgotPasswordText}>Mot de passe oublié ?</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };
@@ -121,10 +110,8 @@ const styles = StyleSheet.create({
   logoText: {
     color: '#EB627A',
     fontSize: 40,
-    fontFamily: 'Marianne',
     fontWeight: '800',
     letterSpacing: 16,
-    wordWrap: 'break-word'
   },
   inputContainer: {
     width: '100%',
@@ -138,7 +125,6 @@ const styles = StyleSheet.create({
     height: 55,
     padding: 15,
     fontSize: 14,
-    fontFamily: 'Marianne',
     fontWeight: '200',
     color: '#161616',
     borderColor : 'rgba(46, 46, 46, 0.15)'
@@ -157,7 +143,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontSize: 17,
-    fontFamily: 'Marianne',
     fontWeight: '700',
   },
   forgotPassword: {
@@ -168,7 +153,6 @@ const styles = StyleSheet.create({
   forgotPasswordText: {
     color: '#0060FF',
     fontSize: 14,
-    fontFamily: 'Marianne',
     fontWeight: '700',
     lineHeight: 22,
   },

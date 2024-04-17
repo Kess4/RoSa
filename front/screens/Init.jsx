@@ -12,7 +12,10 @@ function Init ({navigation}) {
         <Image style={styles.logoImage} source={require('../assets/logo.png')} alt="Logo"/>
       </View>
       <TouchableOpacity onPressIn={() => navigation.navigate('Login')} style={styles.button}>
-        <Text style={styles.buttonText}>Commencer</Text>
+        <Text style={styles.buttonText}>Je suis un agent</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.buttonuser}>
+        <Text style={styles.buttonTextUser}>Je suis un citoyen</Text>
       </TouchableOpacity>
     </View>
   );
@@ -42,10 +45,8 @@ const styles = StyleSheet.create({
   logoText: {
     color: '#EB627A',
     fontSize: 40,
-    fontFamily: 'Marianne',
     fontWeight: '800',
     letterSpacing: 16,
-    wordWrap: 'break-word',
     marginLeft: 'auto',
     marginRight: 'auto'
   },
@@ -59,10 +60,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 16,
   },
+
+  buttonuser: {
+    width: '50%',
+    height: 50,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 16,
+    borderStyle: 'solid',
+    borderWidth: 2,
+    borderColor: '#4B7BEC'
+  },
+
   buttonText: {
     color: 'white',
     fontSize: 17,
-    fontFamily: 'Marianne',
+    fontWeight: '700',
+  },
+  buttonTextUser: {
+    color: '#4B7BEC',
+    fontSize: 17,
     fontWeight: '700',
   },
 });

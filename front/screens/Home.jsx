@@ -1,13 +1,25 @@
 import React,  { useState, useEffect }  from 'react';
-import { View,StyleSheet, Dimensions } from 'react-native';
+import { View,StyleSheet, Dimensions, Animated, Easing } from 'react-native';
 import MapView from 'react-native-map-clustering';
 import {Marker, PROVIDER_GOOGLE, Callout  } from 'react-native-maps';
 import { Icon } from '@rneui/themed';
 import axios from 'axios';
+import ProfilePopup from './ProfilePopup';
 
 const Home = ({ navigation }) => {
 
   const [accidents, setAccidents] = useState([]);
+  
+  const [showOptions, setShowOptions] = useState(false);
+  const [optionsOpacity] = useState(new Animated.Value(0));
+  const [iconColor, setIconColor] = useState('#3867D6');
+  const [iconSize, setIconSize] = useState(45);
+
+  const [isProfilePopupVisible, setIsProfilePopupVisible] = useState(false);
+
+  const toggleProfilePopup = () => {
+    setIsProfilePopupVisible(!isProfilePopupVisible);
+  };
 
   useEffect(() => {
     const fetchAccidents = async () => {
@@ -21,7 +33,21 @@ const Home = ({ navigation }) => {
     };  
     fetchAccidents();
   }, []);
-  
+
+  useEffect(() => {
+    Animated.timing(optionsOpacity, {
+      toValue: showOptions ? 1 : 0,
+      duration: 200,
+      easing: Easing.ease,
+      useNativeDriver: true,
+    }).start();
+  }, [showOptions]);
+
+  const toggleOptions = () => {
+    setShowOptions(!showOptions);
+    setIconColor(showOptions ? '#3867D6' : '#EB3B5A')
+  };
+
 
   return (
     <View style={styles.container}>
@@ -51,15 +77,28 @@ const Home = ({ navigation }) => {
           ))}
       </MapView>
 
-      <View style={{ right: 'auto', bottom: 45, position: 'absolute'}}>
+      <View style={{alignItems:'center', gap:10,right: 50, bottom: 45, position: 'absolute'}}>
+      {showOptions && (
+        <Animated.View style={{ opacity: optionsOpacity, gap:10}}>
+         <View style={{ width: 40, height: 40, backgroundColor: '#3867D6', borderRadius: 9999, justifyContent: 'center'}}>
+            <Icon name='person' color='white' size={30}  onPress={toggleProfilePopup}/>
+          </View>
+          <View style={{ width: 40, height: 40, backgroundColor: '#3867D6', borderRadius: 9999, justifyContent: 'center'}}>
+            <Icon name='description' color='white' size={25} onPress={() => navigation.navigate('Form')} />
+          </View>
+        </Animated.View>
+      )}
+        <View style={{ width: 40, height: 40, backgroundColor: iconColor, borderRadius: 9999, justifyContent: 'center'}}>
         <Icon
-          name='report' 
-          color='#EB3B5A' 
-          size={55}
-          onPressIn={() => navigation.navigate('Form')}
+          name={showOptions ? 'close' : 'add'}
+          color='white'
+          size={35}
+          onPress={toggleOptions}
         />
-        
+        </View>
       </View>
+      <ProfilePopup navigation={navigation} visible={isProfilePopupVisible} onClose={toggleProfilePopup} />
+
     </View>
   );
 };
