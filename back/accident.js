@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/accidents', async (req, res) => {
   try {
     // Exécute une requête SQL pour sélectionner toutes les données d'accident
-    const accidents = await pool.query('SELECT * FROM accident WHERE latitude BETWEEN 44.50 AND 45.50 AND longitude BETWEEN -1.50 AND -0.25 LIMIT 100');
+    const accidents = await pool.query('SELECT * FROM accident WHERE latitude BETWEEN 44.50 AND 45 AND longitude BETWEEN -0.70 AND -0.5 LIMIT 100');
 
     // Renvoie les données d'accident en réponse
     res.status(200).json(accidents.rows);
