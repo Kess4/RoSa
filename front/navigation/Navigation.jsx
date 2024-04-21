@@ -24,7 +24,7 @@ const AuthNavigator = ({ navigation }) => {
         // Définir le token dans l'état local
         setUserToken(token);
         // Rediriger vers la page Init si le token est null ou undefined
-        if (!token) {
+        if (!userToken) {
           navigation.navigate('Init');
         }
       } catch (error) {
