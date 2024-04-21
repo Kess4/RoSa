@@ -21,17 +21,55 @@ ROSA (Road Safety Application) is a mobile application designed to enhance road 
 
 - **Expo:** Expo is used for simplifying the development and deployment process, providing a streamlined experience for React Native projects.
 
-- **Firebase:** Firebase is used for real-time data updates, user authentication, and incident reporting.
+- **PostgreSql:** Postgresql is used for real-time data updates, user authentication, and incident reporting.
 
 ## Getting Started
 
 To run the app locally using Expo, follow these steps:
 
-1. Clone the repository: `git clone [repository-url]`
-2. Navigate to the project folder: `cd rosa-app`
-3. Install Expo CLI globally: `npm install -g expo-cli`
-4. Install dependencies: `npm install`
-5. Start the app: `expo start`
+
+### Front Part Installing
+After retrieving the folder, we point to it with the command:
+
+```bash
+$ cd Rosa
+$ cd front
+```
+
+We then install all the necessary dependencies to launch the project with the command
+
+```bash
+$ npm install -g expo-cli
+$ npm install
+```
+
+And finally we can launch the project
+
+```bash
+$ npm run start
+```
+
+### Back Part Installing
+We then redo the manipulation for the back. After retrieving the api folder, we point to it with the command:
+
+```bash
+$ cd ..
+$ cd back
+```
+
+We then install all the necessary dependencies to launch strapi with the command
+
+```bash
+$ npm install
+```
+
+And finally we can launch the backend:
+
+```bash
+$ node app.js
+```
+
+To be able to access the app, you have to downoload [Expo Go](https://expo.dev/client)
 
 This will open the Expo development server, and you can run the app on your simulator/emulator or scan the QR code with the Expo Go app on your mobile device.
 
