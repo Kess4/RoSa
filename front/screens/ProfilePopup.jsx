@@ -1,9 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, TouchableOpacity, Text, Modal, StyleSheet, Image, Alert } from 'react-native';
 import { Icon } from '@rneui/themed';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
-const ProfilePopup = ({navigation, visible, onClose }) => {
+const ProfilePopup = ({ navigation, visible, onClose }) => {
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        // Récupérer le token JWT depuis le stockage local
+        const token = await AsyncStorage.getItem('token');
+        if (!token) {
+          // Gérer le cas où aucun token n'est disponible (utilisateur non connecté)
+          return;
+        }
+
+        // Effectuer une requête HTTP GET pour récupérer les informations de l'utilisateur
+        const response = await axios.get('http://localhost:3000/auth/profile', {
+          headers: {
+            Authorization: `Bearer ${token}` // Inclure le token dans les en-têtes de la requête
+          }
+        });
+        setUserData(response.data);
+      } catch (error) {
+        console.error('Erreur lors de la récupération des informations de l\'utilisateur :', error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   const handleLogout = async () => {
     // Afficher un message de confirmation
@@ -50,11 +77,15 @@ const ProfilePopup = ({navigation, visible, onClose }) => {
             src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtXd88d7KfEkhwgUDH8WEia3DgXDwPoE1wz32hrD76Aw&s'
             style={{ width: 60, height: 60 }}
             />
-          <Text style={styles.name}>tomdurant@GOUV.FR</Text>
-          <View style={styles.descriptionContainer}>
-            <Text style={styles.description}>Identifiant :xxxxx</Text>
-            <Text style={styles.description}>Gendarmerie</Text>
-          </View>
+          {userData && (
+          <>
+            <Text style={styles.name}>{userData.email}</Text>
+            <View style={styles.descriptionContainer}>
+              <Text style={styles.description}>Identifiant : {userData.username}</Text>
+              <Text style={styles.description}>Gendarmerie</Text>
+            </View>
+          </>
+          )}
           <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
             <Text style={styles.logoutText}>Déconnexion</Text>
           </TouchableOpacity>

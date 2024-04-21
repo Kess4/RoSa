@@ -16,17 +16,6 @@ const Login = ({ navigation }) => {
     }
   };
 
-  // Fonction pour récupérer les informations de connexion
-  const getCredentials = async () => {
-    try {
-      const token = await AsyncStorage.getItem('token');
-      return token;
-    } catch (error) {
-      console.error('Error getting credentials:', error);
-      return null;
-    }
-  };
-
   const handleLogin = async () => {
     try {
       const response = await axios.post('http://localhost:3000/auth/login', {

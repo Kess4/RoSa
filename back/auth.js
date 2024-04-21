@@ -36,6 +36,7 @@ router.post('/login', async (req, res) => {
     if (password !== user.rows[0].password) {
       return res.status(401).json({ message: 'Invalid password' });
     }
+    
     // const passwordMatch = await bcrypt.compare(
     //   password,
     //   user.rows[0].password
@@ -54,6 +55,28 @@ router.post('/login', async (req, res) => {
     console.error('Error during login:', error);
     res.status(500).send('An error occurred during login');
   }
+});
+
+// Route pour récupérer les données des agents
+const authenticateUser = (req, res, next) => {
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+  try {
+    // Vérifier et décoder le token JWT
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decodedToken;   // Extraire les informations sur l'utilisateur à partir du token
+    next();
+  } catch (error) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+};
+
+  // Récupérer les informations sur l'utilisateur à partir du token décodé
+  router.get('/profile', authenticateUser, (req, res) => {
+  const { id, username, email } = req.user;
+    res.json({ id, username, email });
 });
 
 module.exports = router;

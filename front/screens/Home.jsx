@@ -68,7 +68,7 @@ const Home = ({ navigation }) => {
             key={index}
             coordinate={{ latitude: parseFloat(accident.latitude), longitude: parseFloat(accident.longitude) }}
             title={`Accident ${index + 1}`}
-            description={`Date: ${accident.date}, Heure: ${accident.heure}`}
+            description={`Date: ${accident.date}, Indice: ${accident.indice_risque_id}`}
           >
             <View style={styles.circle}>
               <View style={styles.accident} />
@@ -300,4 +300,3 @@ const styles = StyleSheet.create({
 });
 
 export default Home;
-

@@ -4,7 +4,7 @@ const cors = require('cors');
 const session = require('express-session');
 const authRoutes = require('./auth');
 const accidents = require('./accident');
-
+const forms = require('./form')
 require('dotenv').config();
 
 const app = express();
@@ -20,7 +20,8 @@ app.use(
 );
 
 app.use('/auth', authRoutes);
-app.use('/api', accidents);
+app.use('/api', accidents)
+app.use('/post', forms);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
