@@ -46,20 +46,20 @@ const Form = ({ navigation }) => {
   };
 
   const meteo = [
-    { name: 'soleil', source: require('../assets/Icon/soleil.png') },
-    { name: 'clair', source: require('../assets/Icon/clair.png') },
-    { name: 'nuageux', source: require('../assets/Icon/nuageux.png') },
-    { name: 'pluie', source: require('../assets/Icon/pluie.png') },
-    { name: 'orage', source: require('../assets/Icon/orage.png') },
-    { name: 'neige', source: require('../assets/Icon/neige.png') },
+    { name: 'soleil', source: require('../../assets/Icon/soleil.png') },
+    { name: 'clair', source: require('../../assets/Icon/clair.png') },
+    { name: 'nuageux', source: require('../../assets/Icon/nuageux.png') },
+    { name: 'pluie', source: require('../../assets/Icon/pluie.png') },
+    { name: 'orage', source: require('../../assets/Icon/orage.png') },
+    { name: 'neige', source: require('../../assets/Icon/neige.png') },
   ];
 
   const vis = [
-    { name: 'Crepuscule ou aube', source: require('../assets/Icon/aube.png') },
-    { name: 'Nuit avec eclairage allume', source: require('../assets/Icon/allume.png') },
-    { name: 'Nuit avec eclairage eteint', source: require('../assets/Icon/eclairage.png') },
-    { name: 'Nuit sans eclairage', source: require('../assets/Icon/nuit.png') },
-    { name: 'Plein jour', source: require('../assets/Icon/soleil.png') },
+    { name: 'Crepuscule ou aube', source: require('../../assets/Icon/aube.png') },
+    { name: 'Nuit avec eclairage allume', source: require('../../assets/Icon/allume.png') },
+    { name: 'Nuit avec eclairage eteint', source: require('../../assets/Icon/eclairage.png') },
+    { name: 'Nuit sans eclairage', source: require('../../assets/Icon/nuit.png') },
+    { name: 'Plein jour', source: require('../../assets/Icon/soleil.png') },
   ];
 
   const [selectedMeteo, setSelectedMeteo] = useState(null);

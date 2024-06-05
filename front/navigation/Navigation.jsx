@@ -3,11 +3,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import InitScreen from '../screens/Init';
-import LoginScreen from '../screens/Login';
-import FormScreen from '../screens/Form';
-import HomeScreen from '../screens/Home';
+import LoginScreen from '../screens/agent/Login';
+import FormScreen from '../screens/agent/Form';
+import HomeScreen from '../screens/agent/Home';
 import LoaderScreen from '../screens/Loader';
-import ProfilePopup from '../screens/ProfilePopup';
+import ProfilePopup from '../screens/agent/ProfilePopup';
 
 // Créer un objet Stack Navigator
 const Stack = createNativeStackNavigator();

@@ -25,7 +25,7 @@ const Home = ({ navigation }) => {
     const fetchAccidents = async () => {
       try {
         const response = await axios.get('http://localhost:3000/api/accidents');
-        console.log(response.data)
+        // console.log(response.data)
         setAccidents(response.data);
       } catch (error) {
         console.error('Error fetching accidents:', error);

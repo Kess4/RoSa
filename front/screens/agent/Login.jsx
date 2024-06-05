@@ -45,7 +45,7 @@ const Login = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.logoContainer}>
         <Text style={styles.logoText}>ROSA</Text>
-        <Image style={styles.logoImage} marginLeft={'auto'} marginRight={'auto'} source={require('../assets/logo.png')} alt="Logo"/>
+        <Image style={styles.logoImage} marginLeft={'auto'} marginRight={'auto'} source={require('../../assets/logo.png')} alt="Logo"/>
       </View>
       <View style={styles.inputContainer}>
         <TextInput
