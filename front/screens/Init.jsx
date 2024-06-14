@@ -14,7 +14,7 @@ function Init ({navigation}) {
       <TouchableOpacity onPressIn={() => navigation.navigate('Home')} style={styles.button}>
         <Text style={styles.buttonText}>Je suis un agent</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPressIn={() => navigation.navigate('Info')} style={styles.buttonuser}>
+      <TouchableOpacity onPressIn={() => navigation.navigate('Notif')} style={styles.buttonuser}>
         <Text style={styles.buttonTextUser}>Je suis un citoyen</Text>
       </TouchableOpacity>
     </View>

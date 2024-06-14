@@ -5,6 +5,8 @@ const session = require('express-session');
 const authRoutes = require('./auth');
 const accidents = require('./accident');
 const forms = require('./form')
+const infos = require('./info')
+
 require('dotenv').config();
 
 const app = express();
@@ -20,7 +22,7 @@ app.use(
 );
 
 app.use('/auth', authRoutes);
-app.use('/api', accidents)
+app.use('/api', accidents, infos)
 app.use('/post', forms);
 
 const PORT = process.env.PORT || 3000;

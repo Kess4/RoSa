@@ -8,7 +8,7 @@ import FormScreen from '../screens/agent/Form';
 import HomeScreen from '../screens/agent/Home';
 import LoaderScreen from '../screens/Loader';
 import ProfilePopup from '../screens/agent/ProfilePopup';
-import InfoScreen from '../screens/user/Info';
+import NotifScreen from '../screens/user/Notification';
 
 // Créer un objet Stack Navigator
 const Stack = createNativeStackNavigator();
@@ -47,7 +47,7 @@ const AuthNavigator = ({ navigation }) => {
             <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Login' }} />
             
             {/* // Récupérer le token depuis le stockage local */}
-            <Stack.Screen name="Info" component={InfoScreen} options={{ title: 'Info' }} />
+            <Stack.Screen name="Notif" component={NotifScreen} options={{ title: 'Notif' }} />
 
       </Stack.Navigator>
     </NavigationContainer>
