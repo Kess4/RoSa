@@ -11,10 +11,10 @@ function Init ({navigation}) {
         <Text style={styles.logoText}>ROSA</Text>
         <Image style={styles.logoImage} source={require('../assets/logo.png')} alt="Logo"/>
       </View>
-      <TouchableOpacity onPressIn={() => navigation.navigate('Home')} style={styles.button}>
+      <TouchableOpacity onPressIn={() => navigation.navigate('Login')} style={styles.button}>
         <Text style={styles.buttonText}>Je suis un agent</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPressIn={() => navigation.navigate('Notif')} style={styles.buttonuser}>
+      <TouchableOpacity onPressIn={() => navigation.navigate('Accueil')} style={styles.buttonuser}>
         <Text style={styles.buttonTextUser}>Je suis un citoyen</Text>
       </TouchableOpacity>
     </View>

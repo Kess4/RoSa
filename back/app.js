@@ -22,8 +22,7 @@ app.use(
 );
 
 app.use('/auth', authRoutes);
-app.use('/api', accidents, infos)
-app.use('/post', forms);
+app.use('/api', accidents, infos, forms)
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

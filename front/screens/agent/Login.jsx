@@ -69,9 +69,9 @@ const Login = ({ navigation }) => {
       <TouchableOpacity onPress={handleLogin} style={styles.button}>
         <Text style={styles.buttonText}>Se connecter</Text>
       </TouchableOpacity>
-      {/* <TouchableOpacity onPress={() => navigation.goBack()} style={styles.forgotPassword} >
-        <Text style={styles.forgotPasswordText}>Mot de passe oublié ?</Text>
-      </TouchableOpacity> */}
+      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.forgotPassword} >
+        <Text style={styles.forgotPasswordText}>Retour</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -140,10 +140,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   forgotPasswordText: {
-    color: '#0060FF',
-    fontSize: 14,
+    color: '#161616',
+    fontSize: 18,
     fontWeight: '700',
     lineHeight: 22,
+    letterSpacing: 2
   },
 });
 

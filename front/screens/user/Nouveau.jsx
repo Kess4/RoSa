@@ -13,15 +13,15 @@ const Nouveau = () => {
               <Text style={styles.time}>il y a 12 minutes</Text>
             </View>
 
-            <TouchableOpacity>
-            <Text style={styles.seeMore}>Voir plus</Text>
-            </TouchableOpacity>
+           
+            <Text style={styles.seeMore}>Le Bouscat</Text>
+            
 
           </View>
         </View>
         <Image
           style={styles.image}
-          source={{ uri: 'https://via.placeholder.com/80x80' }}
+          source={require('../../assets/icon.png')}
         />
       </View>
       <View style={styles.separator} />
@@ -35,14 +35,14 @@ const Nouveau = () => {
             </View>
 
             <TouchableOpacity>
-            <Text style={styles.seeMore}>Voir plus</Text>
+            <Text style={styles.seeMore}>Bègles</Text>
             </TouchableOpacity>
 
           </View>
         </View>
         <Image
           style={styles.image}
-          source={{ uri: 'https://via.placeholder.com/80x80' }}
+          source={require('../../assets/icon.png')}
         />
       </View>
       <View style={styles.separator} />
@@ -56,14 +56,14 @@ const Nouveau = () => {
             </View>
 
             <TouchableOpacity>
-            <Text style={styles.seeMore}>Voir plus</Text>
+            <Text style={styles.seeMore}>Libourne</Text>
             </TouchableOpacity>
 
           </View>
         </View>
         <Image
           style={styles.image}
-          source={{ uri: 'https://via.placeholder.com/80x80' }}
+          source={require('../../assets/icon.png')}
         />
       </View>
     </View>
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   image: {
     width: 80,
     height: 80,
-    borderRadius: 4,
+    borderRadius: 4
   },
   separator: {
     width: 328,

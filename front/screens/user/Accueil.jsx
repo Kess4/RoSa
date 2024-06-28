@@ -1,36 +1,38 @@
-import React,  { useState, useEffect }  from 'react';
-import { View,StyleSheet, Dimensions, Animated, Easing } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, Dimensions, Animated, Text, Easing, TouchableOpacity } from 'react-native';
 import MapView from 'react-native-map-clustering';
-import {Marker, PROVIDER_GOOGLE, Callout  } from 'react-native-maps';
+import { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { Icon } from '@rneui/themed';
 import axios from 'axios';
-import ProfilePopup from './ProfilePopup';
+import FilterPopup from './Filtre';
 
-const Home = ({ navigation }) => {
-
+const UserHome = ({ navigation }) => {
   const [accidents, setAccidents] = useState([]);
-  
   const [showOptions, setShowOptions] = useState(false);
   const [optionsOpacity] = useState(new Animated.Value(0));
   const [iconColor, setIconColor] = useState('#3867D6');
   const [iconSize, setIconSize] = useState(45);
+  const [isFilterPopupVisible, setIsFilterPopupVisible] = useState(false);
+  const [filters, setFilters] = useState({});
 
-  const [isProfilePopupVisible, setIsProfilePopupVisible] = useState(false);
+  const toggleFilterPopup = () => {
+    setIsFilterPopupVisible(!isFilterPopupVisible);
+  };
 
-  const toggleProfilePopup = () => {
-    setIsProfilePopupVisible(!isProfilePopupVisible);
+  const applyFilters = (filters) => {
+    setFilters(filters);
+    // Implement the logic to filter the accidents based on the applied filters
   };
 
   useEffect(() => {
     const fetchAccidents = async () => {
       try {
         const response = await axios.get('http://localhost:3000/api/accidents');
-        // console.log(response.data)
         setAccidents(response.data);
       } catch (error) {
         console.error('Error fetching accidents:', error);
-      };
-    };  
+      }
+    };
     fetchAccidents();
   }, []);
 
@@ -45,9 +47,15 @@ const Home = ({ navigation }) => {
 
   const toggleOptions = () => {
     setShowOptions(!showOptions);
-    setIconColor(showOptions ? '#3867D6' : '#EB3B5A')
+    setIconColor(showOptions ? '#3867D6' : '#EB3B5A');
   };
 
+  const filteredAccidents = accidents.filter(accident => {
+    if (filters.surface && accident.qualite_de_la_surface !== filters.surface) return false;
+    if (filters.visibilite && accident.visibilite !== filters.visibilite) return false;
+    if (filters.meteo && accident.meteo !== filters.meteo) return false;
+    return true;
+  });
 
   return (
     <View style={styles.container}>
@@ -61,9 +69,8 @@ const Home = ({ navigation }) => {
           latitudeDelta: 0.422,
           longitudeDelta: 0.221,
         }}
-        >
-        
-        {accidents.map((accident, index) => (
+      >
+        {filteredAccidents.map((accident, index) => (
           <Marker
             key={index}
             coordinate={{ latitude: parseFloat(accident.latitude), longitude: parseFloat(accident.longitude) }}
@@ -74,31 +81,46 @@ const Home = ({ navigation }) => {
               <View style={styles.accident} />
             </View>
           </Marker>
-          ))}
+        ))}
       </MapView>
 
-      <View style={{alignItems:'center', gap:10,right: 50, bottom: 45, position: 'absolute'}}>
-      {showOptions && (
-        <Animated.View style={{ opacity: optionsOpacity, gap:10}}>
-         <View style={{ width: 40, height: 40, backgroundColor: '#3867D6', borderRadius: 9999, justifyContent: 'center'}}>
-            <Icon name='person' color='white' size={30}  onPress={toggleProfilePopup}/>
-          </View>
-          <View style={{ width: 40, height: 40, backgroundColor: '#3867D6', borderRadius: 9999, justifyContent: 'center'}}>
-            <Icon name='description' color='white' size={25} onPress={() => navigation.navigate('Form')} />
-          </View>
-        </Animated.View>
-      )}
-        <View style={{ width: 40, height: 40, backgroundColor: iconColor, borderRadius: 9999, justifyContent: 'center'}}>
-        <Icon
-          name={showOptions ? 'close' : 'add'}
-          color='white'
-          size={35}
-          onPress={toggleOptions}
-        />
+      <View style={{ right: 20, top: 80, position: 'absolute' }}>
+        <View style={{ width: 50, height: 50, borderRadius: 9999, justifyContent: 'center' }}>
+          <Icon
+            name='notifications'
+            type='ionicon'
+            color='black'
+            size={30}
+            onPress={() => navigation.navigate('Notif')}
+          />
         </View>
       </View>
-      <ProfilePopup navigation={navigation} visible={isProfilePopupVisible} onClose={toggleProfilePopup} />
 
+      <View style={{ left: 20, top: 80, position: 'absolute' }}>
+        <View style={{ width: 50, height: 50, borderRadius: 9999, justifyContent: 'center' }}>
+          <Icon
+            name='chevron-back'
+            type='ionicon'
+            color='black'
+            size={35}
+            onPress={() => navigation.goBack()}
+          />
+        </View>
+      </View>
+
+      <View style={{ bottom: 40, position: 'absolute' }}>
+        <TouchableOpacity onPress={toggleFilterPopup} style={styles.button}>
+          <Icon
+            name='filter'
+            type='ionicon'
+            color='white'
+            size={25}
+          />
+          <Text style={styles.buttonText}>Filtrer</Text>
+        </TouchableOpacity>
+      </View>
+
+      <FilterPopup visible={isFilterPopupVisible} onClose={toggleFilterPopup} onApplyFilters={applyFilters} />
     </View>
   );
 };
@@ -282,6 +304,29 @@ const styles = StyleSheet.create({
     borderRadius: 200
   },
 
+  button: {
+    width: '100%',
+    height: '100%',
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: '#4B7BEC',
+    borderRadius: 10,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    flexDirection: 'row',
+    gap: 10,
+  },
+
+  buttonText: {
+    textAlign: 'justify',
+    color: 'white',
+    fontSize: 17,
+    fontWeight: '700',
+    flexWrap: 'wrap',
+  },
+  
   accident: {
     backgroundColor: "rgba(235, 59, 90, 1)",
     width: 30,
@@ -299,4 +344,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default Home;
+export default UserHome;
