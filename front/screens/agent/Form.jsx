@@ -216,7 +216,7 @@ const Form = ({ navigation }) => {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
     <View style={{ flex: 1, backgroundColor: 'white', paddingHorizontal: '5%', paddingTop: '20%' }}>
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1,  }}>
         <View style={{ alignSelf: 'stretch', justifyContent: 'flex-start', alignItems: 'flex-start', flexDirection: 'column', gap: 16 }}>
           <View style={{ alignSelf: 'stretch', alignItems: 'center', flexDirection: 'row', gap: 16 }}>
             <Icon
@@ -228,7 +228,7 @@ const Form = ({ navigation }) => {
             <Text style={{ color: 'black', fontSize: 34, fontWeight: '700', lineHeight: 41 }}>Formulaire</Text>
           </View>
 
-          <View style={{ alignSelf: 'stretch', paddingLeft: 40, paddingRight: 40, paddingTop: 20, paddingBottom: 20, margin: 16, backgroundColor: '#F1F1F1', borderRadius: 10, borderWidth: 1.5, borderStyle:'dashed', borderColor: 'black', justifyContent: 'center', alignItems: 'center', gap: 10 }}>
+          <View style={{ width: '100%', alignSelf:'center', paddingTop: 20, paddingBottom: 20, margin: 16, backgroundColor: '#F1F1F1', borderRadius: 10, borderWidth: 1.5, borderStyle:'dashed', borderColor: 'black', justifyContent: 'center', alignItems: 'center', gap: 10 }}>
             <Icon
             name='add-photo-alternate' 
             type='material-icons-outlined'
@@ -245,7 +245,7 @@ const Form = ({ navigation }) => {
           </View>
           
           <View style={{ alignSelf: 'stretch', flexDirection: 'row', marginBottom: 16, justifyContent: 'center', alignItems: 'center', gap: 20 }}>
-            <TouchableOpacity style= {{display: 'flex', justifyContent: 'center', alignItems:'center', width:'50%', height: 46, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8', color: '#BCC5CB' }} onPress={showDatePicker}>
+            <TouchableOpacity style= {{flex: 1, justifyContent: 'center', alignItems:'center', width:'50%', height: 46, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8', color: '#BCC5CB' }} onPress={showDatePicker}>
               <Text style={{ color: 'black', fontSize: 16, fontWeight: '400', lineHeight: 16, }}>Date : {selectedDate ? selectedDate.toDateString() : 'Sélectionner'}</Text>
             </TouchableOpacity>
             <DateTimePickerModal
@@ -256,7 +256,7 @@ const Form = ({ navigation }) => {
               value={formData.date} 
             />
             
-              <TouchableOpacity style= {{display: 'flex', justifyContent: 'center', alignItems:'center', width:'50%', height: 46, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8', color: '#BCC5CB' }} onPress={showTimePicker}>
+              <TouchableOpacity style= {{flex: 1, justifyContent: 'center', alignItems:'center', width:'50%', height: 46, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8', color: '#BCC5CB' }} onPress={showTimePicker}>
                 <Text style={{ color: 'black', fontSize: 16, fontWeight: '400', lineHeight: 16, }}> Heure : {selectedTime ? selectedTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : 'Sélectionner '}</Text>
               </TouchableOpacity>
               <DateTimePickerModal
@@ -271,7 +271,7 @@ const Form = ({ navigation }) => {
             </View>
 
             <Text style={{ color: 'black', fontSize: 16, fontWeight: '700', lineHeight: 18 }}>Lieu</Text>
-            <TouchableOpacity onPress={reverseGeocode} style={{ alignSelf: 'stretch', marginBottom: 16 }}>
+            <TouchableOpacity onPress={reverseGeocode} style={{ flex: 1, alignSelf: 'stretch', marginBottom: 16 }}>
               <TextInput
                 value={formData.lieu}
                 onChangeText={(text) => setFormData({ ...formData, lieu: text })}
@@ -280,7 +280,7 @@ const Form = ({ navigation }) => {
               />
             </TouchableOpacity>
 
-            <Text style={{ color: 'black', fontSize: 16, fontWeight: '700', lineHeight: 18 }}>Nombre de personne(s) accidentée(s)</Text>
+            <Text style={{ color: 'black', fontSize: 16, fontWeight: '700', lineHeight: 28 }}>Nombre de personne(s) accidentée(s)</Text>
             <View style={{ alignSelf: 'stretch', flexDirection: 'row', marginBottom: 16, justifyContent: 'space-between', alignItems: 'center', paddingRight:20}}>
               <View style={{ width: 50, height: 71, position: 'relative' }}>
                 <View style={{ width: 50, height: 45.80, top: 25.20, position: 'absolute' }}>
@@ -336,21 +336,22 @@ const Form = ({ navigation }) => {
 
             </View>
           <Text style={{ color: 'black', fontSize: 16, fontWeight: '700', lineHeight: 18 }}>Type de véhicule</Text>
-          <View style={{ width: 358, height: 64, position: 'relative', marginBottom: 16}}>
-            <Text style={{ width: 358, height: 16, left: 0, top: 48, position: 'absolute', textAlign: 'right', color: 'black', fontSize: 12, fontWeight: '400', lineHeight: 16, marginTop : 8}}>0/100</Text>
+          <View style={{ width: '100%', height: 64, position: 'relative', marginBottom: 16}}>
+            <Text style={{ width: '98%', height: 16, left: 0, top: 48, position: 'absolute', textAlign: 'right', color: 'black', fontSize: 12, fontWeight: '400', lineHeight: 16, marginTop : 8}}>0/100</Text>
             <TextInput                     
             value={formData.type_de_vehicule}
             onChangeText={(text) => setFormData({ ...formData, type_de_vehicule: text })}
-            style={{ width: 358, height: 46, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8', paddingLeft: 12, fontSize: 14, fontWeight: '400', lineHeight: 18 }}  placeholder="Décrivez les différents véhicules impliqués" />
+            style={{height: 46, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8', paddingLeft: 12, color: 'black', fontSize: 14, fontWeight: '400', lineHeight: 18 }}
+            placeholder="Décrivez les différents véhicules impliqués" />
           </View>
 
           <Text style={{ color: 'black', fontSize: 16, fontWeight: '700', lineHeight: 18 }}>Type de collision</Text>
-          <View style={{ width: 358, height: 64, position: 'relative', marginBottom: 16}}>
-            <Text style={{ width: 358, height: 16, left: 0, top: 48, position: 'absolute', textAlign: 'right', color: 'black', fontSize: 12, fontWeight: '400', lineHeight: 16, marginTop : 8}}>0/100</Text>
+          <View style={{ width: '100%', height: 64, position: 'relative', marginBottom: 16}}>
+            <Text style={{width: '98%', height: 16, left: 0, top: 48, position: 'absolute', textAlign: 'right', color: 'black', fontSize: 12, fontWeight: '400', lineHeight: 16, marginTop : 8}}>0/100</Text>
             <TextInput                     
             value={formData.type_de_collision}
             onChangeText={(text) => setFormData({ ...formData, type_de_collision: text })}
-            style={{ width: 358, height: 46, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8', paddingLeft: 12, fontSize: 14, fontWeight: '400', lineHeight: 18 }}  placeholder="Expliquer le type de colision" />
+            style={{ width: '100%', height: 46, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8', paddingLeft: 12, fontSize: 14, fontWeight: '400', lineHeight: 18 }}  placeholder="Expliquer le type de colision" />
           </View>
 
 
@@ -383,12 +384,12 @@ const Form = ({ navigation }) => {
           </View>
 
           <Text style={{ marginTop: 10, color: 'black', fontSize: 16, fontWeight: '700', lineHeight: 18, marginTop : 16}}>Commentaire</Text>
-          <View style={{ width: 358, height: 64, position: 'relative' }}>
-            <Text style={{ width: 358, height: 16, left: 0, top: 48, position: 'absolute', textAlign: 'right', color: 'black', fontSize: 12, fontWeight: '400', lineHeight: 16, marginTop : 8}}>0/100</Text>
+          <View style={{ width: '100%', height: 64, position: 'relative' }}>
+            <Text style={{ width: '98%', height: 16, left: 0, top: 48, position: 'absolute', textAlign: 'right', color: 'black', fontSize: 12, fontWeight: '400', lineHeight: 16, marginTop : 8}}>0/100</Text>
             <TextInput 
              value={formData.commentaire}
              onChangeText={(text) => setFormData({ ...formData, commentaire: text })}
-             style={{ width: 358, height: 46, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8', paddingLeft: 12, fontSize: 14, fontWeight: '400', lineHeight: 18 }}  placeholder="Ajouter un commentaire" />
+             style={{ width: '100%', height: 46, backgroundColor: 'white', borderRadius: 12, borderWidth: 1, borderColor: '#CDD4D8', paddingLeft: 12, fontSize: 14, fontWeight: '400', lineHeight: 18 }}  placeholder="Ajouter un commentaire" />
           </View>
 
           <TouchableOpacity style={{ alignSelf: 'stretch', padding: 15, justifyContent: 'center', alignItems: 'center', backgroundColor: '#4B7BEC', borderRadius: 10, marginTop: 25, marginBottom: 44 }} onPress={handleSubmit}>

@@ -50,7 +50,7 @@ const Login = ({ navigation }) => {
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          placeholder="Entrez votre nom"
+          placeholder="Entrez votre identifiant"
           placeholderTextColor="rgba(46, 46, 46, 1)"
           value={username}
           onChangeText={setUsername}

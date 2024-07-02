@@ -74,6 +74,13 @@ To be able to access the app, you have to downoload [Expo Go](https://expo.dev/c
 This will open the Expo development server, and you can run the app on your simulator/emulator or scan the QR code with the Expo Go app on your mobile device.
 
 
+### Testing
+To test the ***agent part***, you will have to login with those testing credits :
+> Login : tomdurantgouv1
+> Password : azerty123
+
+But for the ***citizen part***, no need to login, they automatically have acess to the application
+
 ## Screenshots  
 
 <img width="390"  alt="Capture d’écran 2024-02-20 à 21 44 35" src="https://github.com/Kess4/RoSa/assets/91597783/931ea7f3-e4e4-4a89-8fd1-9bab7cbc8080">
